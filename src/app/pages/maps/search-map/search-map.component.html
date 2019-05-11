@@ -1,0 +1,7 @@
+<nb-card>
+  <nb-card-header>Google Maps with search</nb-card-header>
+  <nb-card-body>
+    <houseey-search (positionChanged)="updateLocation($event)"></houseey-search>
+    <houseey-map [searchedLocation]="searchedLocation"></houseey-map>
+  </nb-card-body>
+</nb-card>

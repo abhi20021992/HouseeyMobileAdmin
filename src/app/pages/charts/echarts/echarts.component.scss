@@ -1,0 +1,20 @@
+@import '../../../@theme/styles/themes';
+
+@include nb-install-component() {
+  houseey-echarts-pie,
+  houseey-echarts-bar,
+  houseey-echarts-line,
+  houseey-echarts-multiple-xaxis,
+  houseey-echarts-area-stack,
+  houseey-echarts-bar-animation,
+  houseey-echarts-radar {
+    display: block;
+    height: nb-theme(card-height-medium);
+    width: 100%;
+  }
+
+  /deep/ .echart {
+    height: 100%;
+    width: 100%;
+  }
+}

@@ -1,0 +1,14 @@
+<nb-flip-card [showToggleButton]="false" [flipped]="flipped">
+  <nb-card-front>
+    <nb-card size="xsmall">
+      <houseey-stats-card-front></houseey-stats-card-front>
+      <i class="nb-arrow-right" (click)="toggleView()"></i>
+    </nb-card>
+  </nb-card-front>
+  <nb-card-back>
+    <nb-card size="xsmall">
+      <houseey-stats-card-back></houseey-stats-card-back>
+      <i class="nb-arrow-right" (click)="toggleView()"></i>
+    </nb-card>
+  </nb-card-back>
+</nb-flip-card>

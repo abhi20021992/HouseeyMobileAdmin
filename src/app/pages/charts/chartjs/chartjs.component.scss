@@ -1,0 +1,20 @@
+@import '../../../@theme/styles/themes';
+
+@include nb-install-component() {
+  houseey-chartjs-pie,
+  houseey-chartjs-bar,
+  houseey-chartjs-line,
+  houseey-chartjs-multiple-xaxis,
+  houseey-chartjs-bar-horizontal,
+  houseey-chartjs-radar {
+    display: block;
+    height: nb-theme(card-height-medium);
+    width: 100%;
+
+    /deep/ chart {
+      display: block;
+      height: 100%;
+      width: 100%;
+    }
+  }
+}

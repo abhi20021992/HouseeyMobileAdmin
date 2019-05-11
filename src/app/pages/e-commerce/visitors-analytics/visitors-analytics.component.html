@@ -1,0 +1,18 @@
+<nb-card size="medium">
+  <nb-card-header>
+    <div class="title">Visitors Analytics</div>
+    <div class="sub-title">Consumption</div>
+  </nb-card-header>
+  <nb-card-body>
+    <div class="chart-container">
+      <div class="chart-header">
+        <houseey-legend-chart [legendItems]="chartLegend"></houseey-legend-chart>
+      </div>
+      <houseey-visitors-analytics-chart [chartData]="visitorsAnalyticsData"></houseey-visitors-analytics-chart>
+    </div>
+  </nb-card-body>
+
+  <houseey-slide-out [showVisitorsStatistics]="true">
+    <houseey-visitors-statistics [value]="pieChartValue"></houseey-visitors-statistics>
+  </houseey-slide-out>
+</nb-card>

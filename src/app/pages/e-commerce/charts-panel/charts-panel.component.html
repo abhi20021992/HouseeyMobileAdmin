@@ -1,0 +1,22 @@
+<nb-card size="large">
+  <nb-tabset fullWidth (changeTab)="changeTab($event)">
+    <nb-tab tabTitle="Orders">
+      <div class="chart-container">
+        <houseey-chart-panel-summary [summary]="chartPanelSummary"></houseey-chart-panel-summary>
+        <houseey-chart-panel-header [type]="period"
+                                (periodChange)="setPeriodAndGetChartData($event)">
+        </houseey-chart-panel-header>
+        <houseey-orders-chart #ordersChart [ordersChartData]="ordersChartData"></houseey-orders-chart>
+      </div>
+    </nb-tab>
+    <nb-tab tabTitle="Profit" [lazyLoad]="true">
+      <div class="chart-container">
+        <houseey-chart-panel-summary [summary]="chartPanelSummary"></houseey-chart-panel-summary>
+        <houseey-chart-panel-header [type]="period"
+                                (periodChange)="setPeriodAndGetChartData($event)">
+        </houseey-chart-panel-header>
+        <houseey-profit-chart #profitChart [profitChartData]="profitChartData"></houseey-profit-chart>
+      </div>
+    </nb-tab>
+  </nb-tabset>
+</nb-card>
