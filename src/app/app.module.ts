@@ -9,7 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CoreModule } from './@core/core.module';
-
+import { Token } from '../app/@core/models/User';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ThemeModule } from './@theme/theme.module';
@@ -19,7 +19,13 @@ import { HttpInterceptorService } from './interceptors/HttpInterceptor';
 import { ErrorInterceptorService } from './interceptors/ErrorInterceptor';
 import { AuthorizationCheckService } from './interceptors/authorizationCheck';
 import { AuthenticationService } from './@core/services/authentication/appAuthentication.service';
-import { NbAuthModule, NbAuthStrategy, NbPasswordAuthStrategy } from '@nebular/auth';
+import {
+  NbAuthModule,
+  NbAuthStrategy,
+  NbPasswordAuthStrategy,
+  NbTokenLocalStorage,
+  NbAuthSimpleToken,
+} from '@nebular/auth';
 
 @NgModule({
   declarations: [AppComponent],
@@ -36,22 +42,29 @@ import { NbAuthModule, NbAuthStrategy, NbPasswordAuthStrategy } from '@nebular/a
       strategies: [
         NbPasswordAuthStrategy.setup({
           name: 'email',
+          refreshToken: true,
           baseEndpoint: APP_CONFIG.ServiceEndPoints.userServiceURL,
+          token: {
+            key: 'access_token',
+          },
           login: {
             endpoint: 'oauth/token',
             method: 'POST',
-            defaultMessages: ['Login failed', 'Please provide correct user name and password'],
+            defaultErrors: ['Login failed', 'Check user name and password'],
+            redirect: {
+              success: '/pages/dashboard',
+            },
           },
           register: {
-            endpoint: '/auth/sign-up',
+            endpoint: '/api/user',
             method: 'POST',
           },
           requestPass: {
-            endpoint: '/auth/request-pass',
-            method: 'POST',
+            endpoint: '/api/password',
+            method: 'GET',
           },
           resetPass: {
-            endpoint: '/auth/reset-pass',
+            endpoint: '/api/password',
             method: 'POST',
           },
         }),

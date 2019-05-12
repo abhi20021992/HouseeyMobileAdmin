@@ -1,14 +1,13 @@
 import { Injectable } from '@angular/core';
-import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/common/http';
+import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { assign } from 'lodash';
 import { stringify } from 'query-string';
+import { tap, map } from 'rxjs/operators';
+import { Token } from '../@core/models/User';
 @Injectable()
 export class HttpInterceptorService implements HttpInterceptor {
   intercept(request: HttpRequest<any>, newRequest: HttpHandler): Observable<HttpEvent<any>> {
-    // add authorization header to request
-
-    //Get Token data from local storage
     const tokenInfo = sessionStorage.getItem('token');
 
     if (tokenInfo) {
@@ -40,7 +39,24 @@ export class HttpInterceptorService implements HttpInterceptor {
         },
       });
     }
-
-    return newRequest.handle(request);
+    if (request.url.indexOf('token') !== -1) {
+      return newRequest.handle(request).pipe(
+        map((event: HttpResponse<Token>) => {
+          if (event.body) {
+            const newTokenFormat = {
+              FirstName: event.body.FirstName,
+              LastName: event.body.LastName,
+              Roles: event.body.Roles,
+            };
+            localStorage.setItem('Roles', event.body.Roles);
+            localStorage.setItem('FirstName', event.body.FirstName);
+            localStorage.setItem('LastName', event.body.LastName);
+          }
+          return event;
+        }),
+      );
+    } else {
+      return newRequest.handle(request);
+    }
   }
 }

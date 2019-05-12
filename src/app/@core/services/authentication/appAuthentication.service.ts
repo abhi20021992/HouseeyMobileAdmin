@@ -55,7 +55,7 @@ export class AuthenticationService {
 
   logout() {
     sessionStorage.clear();
-    this.router.navigate(['/']);
+    this.router.navigate(['/auth/login']);
   }
 
   isAdminGroupUser() {

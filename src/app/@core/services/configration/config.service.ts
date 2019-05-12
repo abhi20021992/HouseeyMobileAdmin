@@ -20,6 +20,7 @@ export const APP_CONFIG = {
   ],
   adminRoleGroup: ['Admin', 'Roles: string'],
   defaultUserRole: 'Regular',
+  loginErrorMessage: 'Server error not able to login contact admin',
 };
 
 @Injectable({
