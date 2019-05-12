@@ -33,4 +33,8 @@ export class UserService {
         return result;
       });
   }
+
+  getUserName() {
+    return localStorage.getItem('FirstName');
+  }
 }

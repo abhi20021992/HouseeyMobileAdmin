@@ -5,6 +5,8 @@ import { UserData } from '../../../@core/data/users';
 import { AnalyticsService } from '../../../@core/utils';
 import { LayoutService } from '../../../@core/utils';
 import { filter } from 'rxjs/operators';
+import { UserService } from '../../../@core/services/user/user.service';
+import { AuthenticationService } from '../../../@core/services/authentication/appAuthentication.service';
 
 @Component({
   selector: 'houseey-header',
@@ -14,22 +16,29 @@ import { filter } from 'rxjs/operators';
 export class HeaderComponent implements OnInit {
   @Input() position = 'normal';
 
-  user: any;
+  userName: string;
 
-  userMenu = [{ title: 'Profile', click: this.goToProfile }, { title: 'Log out', click: this.logout }];
+  userMenu = [{ title: 'Log out', data: { id: 'logout' } }];
 
   constructor(
     private sidebarService: NbSidebarService,
     private menuService: NbMenuService,
-    private userService: UserData,
     private analyticsService: AnalyticsService,
     private layoutService: LayoutService,
-  ) {
-    menuService.onItemClick().subscribe((bag) => console.log(bag));
-  }
+    private userService: UserService,
+    private authenticationService: AuthenticationService,
+  ) {}
 
   ngOnInit() {
-    this.userService.getUsers().subscribe((users: any) => (this.user = users.nick));
+    this.userName = this.userService.getUserName();
+    this.menuService
+      .onItemClick()
+      .pipe(filter(({ tag }) => tag === undefined))
+      .subscribe((menuItem) => {
+        if (menuItem.item.data && menuItem.item.data['id'] === 'logout') {
+          this.authenticationService.logout();
+        }
+      });
   }
 
   toggleSidebar(): boolean {
@@ -45,11 +54,5 @@ export class HeaderComponent implements OnInit {
 
   startSearch() {
     this.analyticsService.trackEvent('startSearch');
-  }
-
-  goToProfile() {}
-
-  logout() {
-    console.log('logpout');
   }
 }
