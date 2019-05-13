@@ -73,6 +73,11 @@ const routes: Routes = [
         canActivate: [AuthorizationCheckService],
       },
       {
+        path: 'leads',
+        loadChildren: './leads/leads.module#LeadsModule',
+        canActivate: [AuthorizationCheckService],
+      },
+      {
         path: '',
         redirectTo: 'dashboard',
         pathMatch: 'full',

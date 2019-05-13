@@ -5,9 +5,7 @@ declare var $: any;
   providedIn: 'root',
 })
 export class CommonService {
-  showNotification(arg0: string, arg1: string, arg2: string, arg3: string) {
-    throw new Error('Method not implemented.');
-  }
+  showNotification(arg0: string, arg1: string, arg2: string, arg3: string) {}
   constructor() {}
 
   getDisplayName(name: string) {

@@ -23,14 +23,14 @@ export class ErrorInterceptorService implements HttpInterceptor {
           //if 401 response returned from api, logout from application & redirect to login page.
           this.authenticationService.logout();
           sessionStorage.clear();
-          this.router.navigate(['/', '']);
+          this.router.navigate(['/', 'auth/login']);
         } else if (err.status === 0) {
           this.commonService.showNotification('top', 'center', 'warning', 'Server down.');
         } else if (err.status === 400) {
           this.commonService.showNotification('top', 'center', 'danger', err.error ? err.error.error : err.message);
         }
 
-        const error = err.error.message || err.statusText;
+        const error = err;
         return throwError(error);
       }),
     );

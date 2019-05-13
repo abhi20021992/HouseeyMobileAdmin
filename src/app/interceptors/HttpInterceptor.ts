@@ -5,20 +5,14 @@ import { assign } from 'lodash';
 import { stringify } from 'query-string';
 import { tap, map } from 'rxjs/operators';
 import { Token } from '../@core/models/User';
+import { NbAuthService } from '@nebular/auth';
 @Injectable()
 export class HttpInterceptorService implements HttpInterceptor {
+  constructor(private authService: NbAuthService) {}
   intercept(request: HttpRequest<any>, newRequest: HttpHandler): Observable<HttpEvent<any>> {
-    const tokenInfo = sessionStorage.getItem('token');
+    const tokenInfo = this.authService.getToken()['value'].token;
 
-    if (tokenInfo) {
-      request = request.clone({
-        setHeaders: {
-          Authorization: `Bearer ${tokenInfo}`,
-          'Content-Type': 'application/json; charset=utf-8',
-          'Access-Control-Allow-Origin': '*',
-        },
-      });
-    } else if (request.url.indexOf('token') !== -1) {
+    if (request.url.indexOf('token') !== -1) {
       request.body['userName'] = request.body['email'];
       request = request.clone({
         setHeaders: {
@@ -32,6 +26,14 @@ export class HttpInterceptorService implements HttpInterceptor {
           }),
         ),
       });
+    } else if (tokenInfo) {
+      request = request.clone({
+        setHeaders: {
+          Authorization: `Bearer ${tokenInfo}`,
+          'Content-Type': 'application/json; charset=utf-8',
+          'Access-Control-Allow-Origin': '*',
+        },
+      });
     } else {
       request = request.clone({
         setHeaders: {
@@ -43,11 +45,6 @@ export class HttpInterceptorService implements HttpInterceptor {
       return newRequest.handle(request).pipe(
         map((event: HttpResponse<Token>) => {
           if (event.body) {
-            const newTokenFormat = {
-              FirstName: event.body.FirstName,
-              LastName: event.body.LastName,
-              Roles: event.body.Roles,
-            };
             localStorage.setItem('Roles', event.body.Roles);
             localStorage.setItem('FirstName', event.body.FirstName);
             localStorage.setItem('LastName', event.body.LastName);

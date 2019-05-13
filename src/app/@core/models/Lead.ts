@@ -38,6 +38,44 @@ export interface Lead {
   Name?: string;
 }
 
+export class LeadType {
+  FirstName: string;
+  LastName?: any;
+  Email: string;
+  Phone: string;
+  Mobile?: any;
+  Address?: any;
+  LeadSource: number;
+  LeadStage: number;
+  LeadStatus: number;
+  LeadOwner?: any;
+  ProjectName: string;
+  Company?: any;
+  Website?: any;
+  NoofBedRoom?: any;
+  NoofKitchen?: any;
+  Location?: any;
+  Budget?: any;
+  Possession?: any;
+  Size?: any;
+  Favourite: boolean;
+  PropertyType: number;
+  PropertyAge: number;
+  Furnished: number;
+  Vastu: number;
+  Preference?: any;
+  City?: any;
+  Type?: any;
+  CreatedBy?: any;
+  ModifiedBy?: any;
+  Id: number;
+  CreatedOn: string;
+  ModifiedOn?: any;
+  IsDeleted: boolean;
+  DeletedOn?: any;
+  Name?: string;
+}
+
 export interface Leads {
   Leads: Lead[];
 }

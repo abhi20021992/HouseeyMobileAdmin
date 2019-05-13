@@ -7,11 +7,11 @@ export const MENU_ITEMS: NbMenuItem[] = [
     link: '/pages/dashboard',
     home: true,
   },
-  {
-    title: 'IoT Dashboard',
-    icon: 'nb-home',
-    link: '/pages/iot-dashboard',
-  },
+  // {
+  //   title: 'IoT Dashboard',
+  //   icon: 'nb-home',
+  //   link: '/pages/iot-dashboard',
+  // },
   // {
   //   title: 'FEATURES',
   //   group: true,
@@ -217,26 +217,40 @@ export const MENU_ITEMS: NbMenuItem[] = [
   //     },
   //   ],
   // },
+  // {
+  //   title: 'Tables',
+  //   icon: 'nb-tables',
+  //   children: [
+  //     {
+  //       title: 'Smart Table',
+  //       link: '/pages/tables/smart-table',
+  //     },
+  //   ],
+  // },
   {
-    title: 'Tables',
+    title: 'Lead Management',
     icon: 'nb-tables',
     children: [
       {
-        title: 'Smart Table',
-        link: '/pages/tables/smart-table',
+        title: 'View Leads',
+        link: '/pages/leads/view',
       },
-    ],
-  },
-  {
-    title: 'Miscellaneous',
-    icon: 'nb-shuffle',
-    children: [
       {
-        title: '404',
-        link: '/pages/miscellaneous/404',
+        title: 'Add Lead',
+        link: '/pages/leads/create',
       },
     ],
   },
+  // {
+  //   title: 'Miscellaneous',
+  //   icon: 'nb-shuffle',
+  //   children: [
+  //     {
+  //       title: '404',
+  //       link: '/pages/miscellaneous/404',
+  //     },
+  //   ],
+  // },
   // {
   //   title: 'Auth',
   //   icon: 'nb-locked',

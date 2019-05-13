@@ -6,9 +6,7 @@ import { Lead, LeadConfig, LeadNote, LeadSiteVisit, LeadSMS, LeadEmail, LeadHist
 import { CommonService } from '../common/common.service';
 import { chain, groupBy } from 'lodash';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class LeadService {
   constructor(
     private http: HttpClient,
@@ -18,7 +16,7 @@ export class LeadService {
   ) {}
 
   getAllLeads() {
-    return this.http.get<Lead[]>(`${this.config.getEndPoint(this.constants.USER_SERVICE_URL)}/api/leads`).pipe(
+    return this.http.get<Lead[]>(`${this.config.getEndPoint(this.constants.USER_SERVICE_URL)}api/leads`).pipe(
       map((leads) => {
         return leads;
       }),
@@ -26,7 +24,7 @@ export class LeadService {
   }
 
   getLeadConfig() {
-    return this.http.get<LeadConfig>(`${this.config.getEndPoint(this.constants.USER_SERVICE_URL)}/api/config`).pipe(
+    return this.http.get<LeadConfig>(`${this.config.getEndPoint(this.constants.USER_SERVICE_URL)}api/config`).pipe(
       map((config) => {
         return config;
       }),
@@ -35,7 +33,7 @@ export class LeadService {
 
   save(value: Lead) {
     return this.http
-      .put<any>(`${this.config.getEndPoint(this.constants.USER_SERVICE_URL)}/api/leads/${value.Id}`, value)
+      .put<any>(`${this.config.getEndPoint(this.constants.USER_SERVICE_URL)}api/leads/${value.Id}`, value)
       .subscribe((x) => {
         this.commonService.showNotification('top', 'center', 'success', 'Lead updated successfully.');
         return true;
@@ -44,7 +42,7 @@ export class LeadService {
 
   create(value: Lead) {
     return this.http
-      .post<any>(`${this.config.getEndPoint(this.constants.USER_SERVICE_URL)}/api/leads`, value)
+      .post<any>(`${this.config.getEndPoint(this.constants.USER_SERVICE_URL)}api/leads`, value)
       .subscribe((x) => {
         this.commonService.showNotification('top', 'center', 'success', 'Lead created successfully.');
         return true;
@@ -53,7 +51,7 @@ export class LeadService {
 
   addNote(note: LeadNote) {
     return this.http
-      .post<LeadNote>(`${this.config.getEndPoint(this.constants.USER_SERVICE_URL)}/api/leads/note`, note)
+      .post<LeadNote>(`${this.config.getEndPoint(this.constants.USER_SERVICE_URL)}api/leads/note`, note)
       .subscribe((x) => {
         this.commonService.showNotification('top', 'center', 'success', 'Notes added to the lead');
         return true;
@@ -62,7 +60,7 @@ export class LeadService {
 
   addSiteVisit(visit: LeadSiteVisit) {
     return this.http
-      .post<LeadSiteVisit>(`${this.config.getEndPoint(this.constants.USER_SERVICE_URL)}/api/leads/visit`, visit)
+      .post<LeadSiteVisit>(`${this.config.getEndPoint(this.constants.USER_SERVICE_URL)}api/leads/visit`, visit)
       .subscribe((x) => {
         this.commonService.showNotification('top', 'center', 'success', 'Visit scheduled for the lead');
         return true;
@@ -71,7 +69,7 @@ export class LeadService {
 
   sendSMS(sms: LeadSMS) {
     return this.http
-      .post<LeadSMS>(`${this.config.getEndPoint(this.constants.USER_SERVICE_URL)}/api/leads/sms`, sms)
+      .post<LeadSMS>(`${this.config.getEndPoint(this.constants.USER_SERVICE_URL)}api/leads/sms`, sms)
       .subscribe((x) => {
         this.commonService.showNotification('top', 'center', 'success', 'Visit scheduled for the lead');
         return true;
@@ -80,7 +78,7 @@ export class LeadService {
 
   sendEmail(email: LeadEmail) {
     return this.http
-      .post<LeadEmail>(`${this.config.getEndPoint(this.constants.USER_SERVICE_URL)}/api/leads/email`, email)
+      .post<LeadEmail>(`${this.config.getEndPoint(this.constants.USER_SERVICE_URL)}api/leads/email`, email)
       .subscribe((x) => {
         this.commonService.showNotification('top', 'center', 'success', 'Visit scheduled for the lead');
         return true;
@@ -89,7 +87,7 @@ export class LeadService {
 
   history(leadId: string) {
     return this.http
-      .get<LeadHistory[]>(`${this.config.getEndPoint(this.constants.USER_SERVICE_URL)}/api/leads/history?id=${leadId}`)
+      .get<LeadHistory[]>(`${this.config.getEndPoint(this.constants.USER_SERVICE_URL)}api/leads/history?id=${leadId}`)
       .pipe(
         map((leads) => {
           return groupBy(leads, 'Type');
@@ -99,7 +97,7 @@ export class LeadService {
 
   changeFavorite(lead: Lead) {
     return this.http
-      .patch<LeadHistory[]>(`${this.config.getEndPoint(this.constants.USER_SERVICE_URL)}/api/leads/favorite`, lead)
+      .patch<LeadHistory[]>(`${this.config.getEndPoint(this.constants.USER_SERVICE_URL)}api/leads/favorite`, lead)
       .pipe(
         map((response) => {
           return response;

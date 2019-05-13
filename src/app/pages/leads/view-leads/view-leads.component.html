@@ -1,0 +1,14 @@
+<nb-card>
+  <nb-card-header>
+    All Leads
+  </nb-card-header>
+
+  <nb-card-body *ngIf="leadData">
+    <ng2-smart-table [settings]="settings"
+                     [source]="source"
+                     (deleteConfirm)="onDeleteConfirm($event)"
+                     (edit)="onEdit($event)"
+                     (create)="onColumnChange($event)">
+    </ng2-smart-table>
+  </nb-card-body>
+</nb-card>
