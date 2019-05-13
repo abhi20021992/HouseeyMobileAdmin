@@ -1,11 +1,16 @@
 @import '../../../../@theme/styles/themes';
 
 @include nb-install-component() {
-  input {
-    width: 100%;
+  nb-card {
+    max-width: 600px;
   }
+}
 
-  .btn-success {
-    margin-left: 1rem;
-  }
+nb-card {
+  width: 95vw;
+  height: 80vh;
+}
+
+.invalid-feedback {
+  display: block !important;
 }

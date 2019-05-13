@@ -1,6 +1,10 @@
-<nb-card>
+<nb-card [nbSpinner]="loading"
+         nbSpinnerStatus="danger">
   <nb-card-header>
     All Leads
+    <div class="col-sm-12">
+      this is place for multi column selec
+    </div>
   </nb-card-header>
 
   <nb-card-body *ngIf="leadData">

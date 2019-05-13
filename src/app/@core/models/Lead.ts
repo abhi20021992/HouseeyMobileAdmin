@@ -76,6 +76,140 @@ export class LeadType {
   Name?: string;
 }
 
+export const VALIDATION_MESSAGE = {
+  FirstName: [
+    {
+      empty: `Please provide first name.`,
+    },
+  ],
+  LastName: [
+    {
+      empty: `Please provide last name.`,
+    },
+  ],
+  Email: [
+    {
+      empty: `Please provide email.`,
+    },
+  ],
+  Phone: [
+    {
+      empty: `Please provide phone.`,
+    },
+  ],
+  Mobile: [
+    {
+      empty: `Please provide mobile.`,
+      invalidInput: `Please provide a valid phone`,
+    },
+  ],
+  Address: [
+    {
+      empty: `Please provide address.`,
+    },
+  ],
+  LeadStage: [
+    {
+      empty: `Please provide lead stage.`,
+    },
+  ],
+  LeadSource: [
+    {
+      empty: `Please provide lead source.`,
+    },
+  ],
+  LeadStatus: [
+    {
+      empty: `Please provide lead status.`,
+    },
+  ],
+  ProjectName: [
+    {
+      empty: `Please provide project name.`,
+    },
+  ],
+  Company: [
+    {
+      empty: `Please provide company.`,
+    },
+  ],
+  Website: [
+    {
+      empty: `Please provide website.`,
+    },
+  ],
+  NoofBedRoom: [
+    {
+      empty: `Please provide no of bed rooms.`,
+    },
+  ],
+  NoofKitchen: [
+    {
+      empty: `Please provide no of kitchen.`,
+    },
+  ],
+  Location: [
+    {
+      empty: `Please provide location.`,
+    },
+  ],
+  Budget: [
+    {
+      empty: `Please provide budget.`,
+    },
+  ],
+  Possession: [
+    {
+      empty: `Please provide possession.`,
+    },
+  ],
+  Size: [
+    {
+      empty: `Please provide size.`,
+    },
+  ],
+  PropertyType: [
+    {
+      empty: `Please provide property type.`,
+    },
+  ],
+  PropertyAge: [
+    {
+      empty: `Please provide property age.`,
+    },
+  ],
+  Furnished: [
+    {
+      empty: `Please provide furnished.`,
+    },
+  ],
+  Vastu: [
+    {
+      empty: `Please provide vastu.`,
+    },
+  ],
+  Preference: [
+    {
+      empty: `Please provide preference.`,
+    },
+  ],
+  City: [
+    {
+      empty: `Please provide city.`,
+    },
+  ],
+  Type: [
+    {
+      empty: `Please provide type.`,
+    },
+  ],
+  LeadOwner: [
+    {
+      empty: `Please provide lead owner.`,
+    },
+  ],
+};
+
 export interface Leads {
   Leads: Lead[];
 }

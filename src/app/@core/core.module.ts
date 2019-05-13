@@ -50,6 +50,7 @@ import { LeadService } from './services/leadmanagement/lead.service';
 import { AuthenticationService } from './services/authentication/appAuthentication.service';
 import { CommonService } from './services/common/common.service';
 import { NotificationService } from './services/notification/notification.service';
+import { NbToastrModule, NbGlobalPhysicalPosition } from '@nebular/theme';
 
 const socialLinks = [
   {
@@ -148,7 +149,15 @@ export const NB_CORE_PROVIDERS = [
 ];
 
 @NgModule({
-  imports: [CommonModule],
+  imports: [
+    CommonModule,
+    NbToastrModule.forRoot({
+      duration: 5000,
+      preventDuplicates: true,
+      hasIcon: true,
+      position: NbGlobalPhysicalPosition.TOP_RIGHT,
+    }),
+  ],
   exports: [NbAuthModule],
   declarations: [],
 })

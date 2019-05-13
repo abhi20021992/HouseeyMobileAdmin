@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
+import { NbToastrService } from '@nebular/theme';
 declare var $: any;
 
 @Injectable({
   providedIn: 'root',
 })
 export class CommonService {
-  showNotification(arg0: string, arg1: string, arg2: string, arg3: string) {}
-  constructor() {}
+  constructor(private toasterService: NbToastrService) {}
 
   getDisplayName(name: string) {
     return name
@@ -22,5 +22,12 @@ export class CommonService {
       return false;
     }
     return true;
+  }
+
+  showNotification(message: string, status: string, hasIcon: boolean, duration?: number) {
+    this.toasterService.show(message, status, {
+      hasIcon: hasIcon,
+      duration: duration ? duration : 5000,
+    });
   }
 }

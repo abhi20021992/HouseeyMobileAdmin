@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LocalDataSource } from 'ng2-smart-table';
 import { LeadService } from '../../../@core/services/leadmanagement/lead.service';
-import { Lead, LeadType } from '../../../@core/models/Lead';
+import { Lead, LeadType, LeadConfig } from '../../../@core/models/Lead';
 import { CommonService } from '../../../@core/services/common/common.service';
 import { pick } from 'lodash';
 import { NbDialogService } from '@nebular/theme';
@@ -24,6 +24,8 @@ export class ViewLeadsComponent implements OnInit {
   leadData: Lead[];
   columns = {};
   columnsToDisplay: [];
+  loading = true;
+  leadConfig: LeadConfig;
   settings = {
     mode: 'external',
     actions: {
@@ -53,6 +55,9 @@ export class ViewLeadsComponent implements OnInit {
     private commonService: CommonService,
     private dialogService: NbDialogService,
   ) {
+    this.leadService.getLeadConfig().subscribe((config) => {
+      this.leadConfig = config;
+    });
     this.leadService.getAllLeads().subscribe((leads) => {
       this.leadData = leads;
       if (leads.length > 0) {
@@ -64,6 +69,7 @@ export class ViewLeadsComponent implements OnInit {
       }
       this.settings.columns = this.getColumnsToDisplay();
       this.source.load(this.leadData);
+      this.loading = false;
     });
   }
 
@@ -79,7 +85,10 @@ export class ViewLeadsComponent implements OnInit {
 
   onEdit(event) {
     this.dialogService.open(EditDialogComponent, {
-      context: {},
+      context: {
+        data: event['data'],
+        leadConfig: this.leadConfig,
+      },
     });
   }
 

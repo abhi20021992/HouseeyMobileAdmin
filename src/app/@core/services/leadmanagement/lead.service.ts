@@ -35,7 +35,7 @@ export class LeadService {
     return this.http
       .put<any>(`${this.config.getEndPoint(this.constants.USER_SERVICE_URL)}api/leads/${value.Id}`, value)
       .subscribe((x) => {
-        this.commonService.showNotification('top', 'center', 'success', 'Lead updated successfully.');
+        this.commonService.showNotification(`Lead with name ${value.FirstName} updated`, 'success', true);
         return true;
       });
   }
