@@ -12,6 +12,9 @@
     },
     "cordova-plugin-whitelist": {
       "PACKAGE_NAME": "com.houseey.app"
+    },
+    "cordova-plugin-network-information": {
+      "PACKAGE_NAME": "com.houseey.app"
     }
   },
   "dependent_plugins": {}

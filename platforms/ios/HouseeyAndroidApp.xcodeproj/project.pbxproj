@@ -14,6 +14,10 @@
 		302D95F214D2391D003F00A1 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 302D95F014D2391D003F00A1 /* MainViewController.xib */; };
 		6AFF5BF91D6E424B00AB3073 /* CDVLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AFF5BF81D6E424B00AB3073 /* CDVLaunchScreen.storyboard */; };
 		F6C96E29582D4A78A86521F5 /* CDVDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = E6644410273F4A13BE8D5BEA /* CDVDevice.m */; };
+		8ECD57BEB3A34F5B980DF379 /* CDVConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DD00900809D40C38C8992DB /* CDVConnection.m */; };
+		491CB23FBE114469B1813414 /* CDVReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = E176F8A436C148C28DBB9973 /* CDVReachability.m */; };
+		A12CE1344537445998C896BD /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65F040090BBB4EE789C8C1F9 /* SystemConfiguration.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		DE9140F67C33433395E782F8 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 842ED00E676F4AE6BCAE653C /* CoreTelephony.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +67,12 @@
 		F840E1F0165FE0F500CFE078 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = "HouseeyAndroidApp/config.xml"; sourceTree = "<group>"; };
 		E6644410273F4A13BE8D5BEA /* CDVDevice.m */ = {isa = PBXFileReference; name = "CDVDevice.m"; path = "cordova-plugin-device/CDVDevice.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
 		8D01DFBFB0B24AD2ABD3C2B8 /* CDVDevice.h */ = {isa = PBXFileReference; name = "CDVDevice.h"; path = "cordova-plugin-device/CDVDevice.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		5DD00900809D40C38C8992DB /* CDVConnection.m */ = {isa = PBXFileReference; name = "CDVConnection.m"; path = "cordova-plugin-network-information/CDVConnection.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		E176F8A436C148C28DBB9973 /* CDVReachability.m */ = {isa = PBXFileReference; name = "CDVReachability.m"; path = "cordova-plugin-network-information/CDVReachability.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		13DD0FD3B48641FEAE47F12C /* CDVConnection.h */ = {isa = PBXFileReference; name = "CDVConnection.h"; path = "cordova-plugin-network-information/CDVConnection.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		6C9302FF310E482FAE12488F /* CDVReachability.h */ = {isa = PBXFileReference; name = "CDVReachability.h"; path = "cordova-plugin-network-information/CDVReachability.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		65F040090BBB4EE789C8C1F9 /* SystemConfiguration.framework */ = {isa = PBXFileReference; name = "SystemConfiguration.framework"; path = "System/Library/Frameworks/SystemConfiguration.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
+		842ED00E676F4AE6BCAE653C /* CoreTelephony.framework */ = {isa = PBXFileReference; name = "CoreTelephony.framework"; path = "System/Library/Frameworks/CoreTelephony.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +81,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				301BF552109A68D80062928A /* libCordova.a in Frameworks */,
+				A12CE1344537445998C896BD /* SystemConfiguration.framework in Frameworks */,
+				DE9140F67C33433395E782F8 /* CoreTelephony.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,6 +153,8 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				65F040090BBB4EE789C8C1F9 /* SystemConfiguration.framework */,
+				842ED00E676F4AE6BCAE653C /* CoreTelephony.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -169,6 +183,10 @@
 			children = (
 				E6644410273F4A13BE8D5BEA /* CDVDevice.m */,
 				8D01DFBFB0B24AD2ABD3C2B8 /* CDVDevice.h */,
+				5DD00900809D40C38C8992DB /* CDVConnection.m */,
+				E176F8A436C148C28DBB9973 /* CDVReachability.m */,
+				13DD0FD3B48641FEAE47F12C /* CDVConnection.h */,
+				6C9302FF310E482FAE12488F /* CDVReachability.h */,
 			);
 			name = Plugins;
 			path = "HouseeyAndroidApp/Plugins";
@@ -294,6 +312,8 @@
 				1D3623260D0F684500981E51 /* AppDelegate.m in Sources */,
 				302D95F114D2391D003F00A1 /* MainViewController.m in Sources */,
 				F6C96E29582D4A78A86521F5 /* CDVDevice.m in Sources */,
+				8ECD57BEB3A34F5B980DF379 /* CDVConnection.m in Sources */,
+				491CB23FBE114469B1813414 /* CDVReachability.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
