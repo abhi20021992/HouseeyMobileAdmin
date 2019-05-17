@@ -1,0 +1,342 @@
+<nb-card>
+  <nb-card-header>Add new lead</nb-card-header>
+  <nb-card-body *ngIf="leadConfig">
+    <form [formGroup]="leadForm">
+      <div class="form-group">
+        <label class="control-label">First Name</label>
+        <div>
+          <input type="text"
+                 formControlName="FirstName"
+                 class="form-control input-lg"
+                 name=""
+                 required>
+          <div class="invalid-feedback"
+               *ngIf="control.FirstName.errors && control.FirstName.errors.required">
+            Please provide first name.
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label">Last Name</label>
+        <div>
+          <input type="text"
+                 formControlName="LastName"
+                 class="form-control input-lg"
+                 name="">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label">Email</label>
+        <div>
+          <input type="text"
+                 formControlName="Email"
+                 class="form-control input-lg"
+                 name="">
+          <div class="invalid-feedback"
+               *ngIf="control.Email.errors && control.Email.errors.required">
+            Please provide email.
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label">Phone</label>
+        <div>
+          <input type="text"
+                 formControlName="Phone"
+                 class="form-control input-lg"
+                 name="">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label">Mobile</label>
+        <div>
+          <input type="text"
+                 formControlName="Mobile"
+                 class="form-control input-lg"
+                 name="">
+          <div class="invalid-feedback"
+               *ngIf="control.Mobile.errors && (control.Mobile.errors.required || control.Mobile.errors.minlength)">
+            Please provide valid mobile.
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label">Address</label>
+        <div>
+          <input type="text"
+                 formControlName="Address"
+                 class="form-control input-lg"
+                 name="">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label">Lead Stage</label>
+        <div class="form-group">
+          <label>Select Lead Stage</label>
+          <select class="form-control"
+                  formControlName="LeadStage">
+            <option value="{{leadStage.value}}"
+                    *ngFor="let leadStage of leadConfig.LeadStage">{{commonService.getDisplayName(leadStage.name)}}
+            </option>
+          </select>
+        </div>
+        <div class="invalid-feedback"
+             *ngIf="control.LeadStage.errors && control.LeadStage.errors.required">
+          Please select lead stage.
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label">LeadSource</label>
+        <div>
+          <label>Select Lead Source</label>
+          <select class="form-control"
+                  formControlName="LeadSource">
+            <option value="{{leadSource.value}}"
+                    *ngFor="let leadSource of leadConfig.LeadSource">{{commonService.getDisplayName(leadSource.name)}}
+            </option>
+          </select>
+
+          <div class="invalid-feedback"
+               *ngIf="control.LeadSource.errors && control.LeadSource.errors.required">
+            Please select lead source.
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label">Lead Status</label>
+        <div>
+          <label>Select Lead Status</label>
+          <select class="form-control"
+                  formControlName="LeadStatus">
+            <option value="{{leadStatus.value}}"
+                    *ngFor="let leadStatus of leadConfig.LeadStatus">{{commonService.getDisplayName(leadStatus.name)}}
+            </option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label">Project Name</label>
+        <div>
+          <input type="text"
+                 formControlName="ProjectName"
+                 class="form-control input-lg"
+                 name="">
+
+          <div class="invalid-feedback"
+               *ngIf="control.ProjectName.errors && control.ProjectName.errors.required">
+            Please provide project name.
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label">Company</label>
+        <div>
+          <input type="text"
+                 formControlName="Company"
+                 class="form-control input-lg"
+                 name="">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label">Website</label>
+        <div>
+          <input type="text"
+                 formControlName="Website"
+                 class="form-control input-lg"
+                 name="">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label">No Of BedRoom</label>
+        <div>
+          <input type="text"
+                 formControlName="NoofBedRoom"
+                 class="form-control input-lg"
+                 name="">
+          <div class="invalid-feedback"
+               *ngIf="control.NoofBedRoom.errors && control.NoofBedRoom.errors.required">
+            Please provide no of bed rooms.
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label">No Of Kitchen</label>
+        <div>
+          <input type="text"
+                 formControlName="NoofKitchen"
+                 class="form-control input-lg"
+                 name="">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label">Location</label>
+        <div>
+          <input type="text"
+                 formControlName="Location"
+                 class="form-control input-lg"
+                 name="">
+          <div class="invalid-feedback"
+               *ngIf="control.Location.errors && control.Location.errors.required">
+            Please provide location.
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label">Budget</label>
+        <div>
+          <input type="text"
+                 formControlName="Budget"
+                 class="form-control input-lg"
+                 name="">
+          <div class="invalid-feedback"
+               *ngIf="control.Budget.errors && control.Budget.errors.required">
+            Please provide budget.
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label">Possession</label>
+        <div>
+          <input type="text"
+                 formControlName="Possession"
+                 class="form-control input-lg"
+                 name="">
+          <div class="invalid-feedback"
+               *ngIf="control.Possession.errors && control.Possession.errors.required">
+            Please provide possession.
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label">Size</label>
+        <div>
+          <input type="text"
+                 formControlName="Size"
+                 class="form-control input-lg"
+                 name="">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label">Property Type</label>
+        <div>
+          <label>Select Property Type</label>
+          <select class="form-control"
+                  formControlName="PropertyType">
+            <option value="{{propertyType.value}}"
+                    *ngFor="let propertyType of leadConfig.PropertyType">
+              {{commonService.getDisplayName(propertyType.name)}}</option>
+          </select>
+          <div class="invalid-feedback"
+               *ngIf="control.PropertyType.errors && control.PropertyType.errors.required">
+            Please select property type.
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label">Property Age</label>
+        <div>
+          <label>Select Property Age</label>
+          <select class="form-control"
+                  formControlName="PropertyAge">
+            <option value="{{propertyAge.value}}"
+                    *ngFor="let propertyAge of leadConfig.PropertyAge">
+              {{commonService.getDisplayName(propertyAge.name)}}</option>
+          </select>
+          <div class="invalid-feedback"
+               *ngIf="control.PropertyAge.errors && control.PropertyAge.errors.required">
+            Please select property age.
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label">Furnished</label>
+        <div>
+          <label>Select Furnished</label>
+          <select class="form-control"
+                  formControlName="Furnished">
+            <option value="{{furnished.value}}"
+                    *ngFor="let furnished of leadConfig.Furnished">{{commonService.getDisplayName(furnished.name)}}
+            </option>
+          </select>
+          <div class="invalid-feedback"
+               *ngIf="control.Furnished.errors && control.Furnished.errors.required">
+            Please select furnish status.
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label">Vastu</label>
+        <div>
+          <label>Select Vastu</label>
+          <select class="form-control"
+                  formControlName="Vastu">
+            <option value="{{vastu.value}}"
+                    *ngFor="let vastu of leadConfig.Vastu">{{commonService.getDisplayName(vastu.name)}}</option>
+          </select>
+          <div class="invalid-feedback"
+               *ngIf="control.Vastu.errors && control.Vastu.errors.required">
+            Please select vastu.
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label">Preference</label>
+        <div>
+          <input type="text"
+                 formControlName="Preference"
+                 class="form-control input-lg"
+                 name="">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label">City</label>
+        <div>
+          <input type="text"
+                 formControlName="City"
+                 class="form-control input-lg"
+                 name="">
+
+          <div class="invalid-feedback"
+               *ngIf="control.City.errors && control.City.errors.required">
+            Please provide city.
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label">Type</label>
+        <div>
+          <input type="text"
+                 formControlName="Type"
+                 class="form-control input-lg"
+                 name="">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label">Lead Owner</label>
+        <div>
+          <input type="text"
+                 formControlName="LeadOwner"
+                 class="form-control input-lg"
+                 name="password_confirmation">
+          <div class="invalid-feedback"
+               *ngIf="control.LeadOwner.errors && control.LeadOwner.errors.required">
+            Please provide lead owner.
+          </div>
+        </div>
+      </div>
+    </form>
+
+  </nb-card-body>
+  <nb-card-footer>
+    <button nbButton
+            status="danget"
+            size="xsmall"
+            (click)="cancel()">Cancel</button>
+
+    <button nbButton
+            status="primary"
+            size="xsmall"
+            [disabled]="leadForm.invalid"
+            (click)="submit()">Create</button>
+  </nb-card-footer>
+</nb-card>
