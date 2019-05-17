@@ -6,7 +6,15 @@
   "main": "index.js",
   "scripts": {
     "start": "cd AngularApp && ng serve --port 4242 --open",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build-apk": "npm-run-all -s build build-mobile-app-android run-mobile-app-android",
+    "build-ios": "npm-run-all -s build build-mobile-app-ios run-mobile-app-ios",
+    "build": "ng build --prod",
+    "test": "ng test",
+    "build-mobile-app-android ": "cordova build android --release",
+    "run-mobile-app-android": "cordova emulate android",
+    "build-mobile-app-ios ": "cordova build ios --release",
+    "run-mobile-app-ios": "cordova emulate ios",
+    "install:clean": "rm -rf ../node_modules/ && rm -rf package-lock.json && npm install && ng serve -o"
   },
   "keywords": [
     "ecosystem:cordova"
