@@ -51,6 +51,7 @@
     "cordova-browser": "^6.0.0",
     "cordova-ios": "^5.0.1",
     "cordova-plugin-device": "^2.0.2",
+    "cordova-plugin-network-information": "^2.0.1",
     "core-js": "2.5.1",
     "echarts": "^4.0.2",
     "eva-icons": "^1.1.0",
