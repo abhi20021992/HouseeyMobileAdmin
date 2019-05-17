@@ -383,3 +383,5 @@ plugins/android.json
 plugins/browser.json
 plugins/fetch.json
 plugins/ios.json
+platforms/android/app/src/main/assets/www/main.61d42d0366eff7a13b24.js
+platforms/android/app/src/main/assets/www/index.html

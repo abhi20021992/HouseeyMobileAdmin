@@ -6,8 +6,8 @@
   "main": "index.js",
   "scripts": {
     "start": "cd AngularApp && ng serve --port 4242 --open",
-    "build-apk": "npm-run-all -s build build-mobile-app-android run-mobile-app-android",
-    "build-ios": "npm-run-all -s build build-mobile-app-ios run-mobile-app-ios",
+    "build-run-apk": "npm-run-all -s build build-mobile-app-android run-mobile-app-android",
+    "build-run-ios": "npm-run-all -s build build-mobile-app-ios run-mobile-app-ios",
     "build": "cd AngularApp && ng build --prod",
     "test": "cd AngularApp && ng test",
     "build-mobile-app-android": "cordova build android --release",
