@@ -10,7 +10,7 @@
     "build-ios": "npm-run-all -s build build-mobile-app-ios run-mobile-app-ios",
     "build": "ng build --prod",
     "test": "ng test",
-    "build-mobile-app-android ": "cordova build android --release",
+    "build-mobile-app-android": "cordova build android --release",
     "run-mobile-app-android": "cordova emulate android",
     "build-mobile-app-ios ": "cordova build ios --release",
     "run-mobile-app-ios": "cordova emulate ios",
